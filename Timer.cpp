@@ -6,10 +6,6 @@ public:
         startTime = std::chrono::steady_clock::now();
     }
 
-    void restart() {
-        start(); 
-    }
-
     long long getElapsedTime() const {
         auto now = std::chrono::steady_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - startTime);
