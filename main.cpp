@@ -22,12 +22,21 @@ int main() {
 
     std::string input;
     while (true) {
-        std::cout << "enter a word:¨: ";
-        std::getline(std::cin, input);
-        if (input == "0") {
-            std::cout << "Game over. You're such a pussy.\n";
+        if (timer.elapsedSeconds() > 240) {
+            std::cout << "Time's up! You lose!\n";
             break;
         }
+    
+        std::cout << "Time left: " << 240 - timer.elapsedSeconds() << " seconds\n";
+        std::cout << "Available letters: " << letterPool.getAvailLetters() << "\n";
+        std::cout << "Enter a word: ";
+        std::getline(std::cin, input);
+    
+        if (input == "0") {
+            std::cout << "Game over. Thanks for playing!\n";
+            break;
+        }
+    
         std::transform(input.begin(), input.end(), input.begin(), ::tolower);
         if (dict.isWord(input)) {
             if (letterPool.useLetters(input)) {
@@ -38,16 +47,12 @@ int main() {
         } else {
             std::cout << "Not a valid word: " << input << "\n";
         }
-        std::cout << "Available letters: " << letterPool.getAvailLetters() << "\n";
+    
         if (letterPool.isEmpty()) {
             std::cout << "No more letters, you win!\n";
             break;
         }
-        if (timer.elapsedSeconds() > 240) {
-            std::cout << "Time's up! You lose!\n";
-            break;
-        }
-        std::cout << "Time left: " << 240 - timer.elapsedSeconds() << " seconds\n";
+        
     }
     return 0;
 }

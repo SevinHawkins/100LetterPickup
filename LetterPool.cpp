@@ -1,5 +1,6 @@
 #include "LetterPool.h"
 #include <cctype>
+#include <sstream>
 
 // Constructor
 LetterPool::LetterPool() {}
@@ -32,11 +33,13 @@ bool LetterPool::useLetters(const std::string& word) {
 }
 
 std::string LetterPool::getAvailLetters() const {
-    std::string result;
+    std::ostringstream result;
     for (const auto& [c, count] : letters) {
-        result.append(count, c);
+        if (count > 0) {
+            result << c << ": " << count << "  ";
+        }
     }
-    return result;
+    return result.str();
 }
 
 bool LetterPool::isEmpty() const {
