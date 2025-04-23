@@ -7,7 +7,7 @@ std::vector<std::string> wordsToFillPool(Dictionary& dict, int maxLetters) {
     std::vector<std::string> selectedWords;
     std::string letterBlob;
 
-    std::mt19937 rng(std::random_device());
+    std::mt19937 rng((std::random_device())());
     std::shuffle(words.begin(), words.end(), rng);
 
     for (const auto& word : words) {
