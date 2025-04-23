@@ -2,11 +2,11 @@
 
 class Timer {
 public:
-    void start() {
+    void Timer::start() {
         startTime = std::chrono::steady_clock::now();
     }
 
-    long long getElapsedTime() const {
+    long long Timer::getElapsedTime() const {
         auto now = std::chrono::steady_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - startTime);
         return elapsed.count();
