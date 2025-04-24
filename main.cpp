@@ -14,7 +14,6 @@ int main() {
 
     std::cout << "Welcome to 100 Letter Pickup!\n";
     std::cout << "You have 4 minutes to use as many letters as possible.\n";
-    std::cout << "Available letters: " << letterPool.getAvailLetters() << "\n";
     std::cout << "Type '0' to quit.\n";
 
     GameTimer timer;
